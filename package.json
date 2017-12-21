@@ -1,0 +1,14 @@
+{
+  "name": "sneakpick",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "express": "3.2.6",
+    "htmlparser2": "^3.9.2",
+    "jade": "*"
+  }
+}
