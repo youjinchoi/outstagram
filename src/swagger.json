@@ -1,0 +1,210 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Outstagram",
+    "version": "1.0.0",
+    "title": "Swagger Outstagram",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "question",
+      "description": "Everything about your Question"
+    }
+  ],
+  "schemes": [
+    "http", "https"
+  ],
+  "paths": {
+    "/accounts": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "count",
+            "description": "default 10",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "description": "default my",
+            "required": false
+          },
+          {
+            "in": "header",
+            "name": "Access-Key",
+            "description": "user accessKey",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/accounts/search": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "description": "sns 계정 id",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "description": "sns type. default 1(instagram)",
+            "required": false
+          },
+          {
+	        "in": "header",
+	        "name": "Access-Key",
+	        "description": "user accessKey",
+	        "required": true
+	      }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/users": {
+        "post": {
+          "tags": ["user"],
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "user",
+              "description": "user informagion",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "405": {
+              "description": "Invalid input"
+            }
+          }
+        }
+      },
+    "/relations/follow": {
+      "post": {
+        "tags": ["relation"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tempAccount",
+            "description": "tempAccount informagion",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TempAccount"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Access-Key",
+            "description": "user accessKey",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+        "type": "object",
+        "required": [
+            "type"
+          ],
+        "properties": {
+          "type" : {
+            "type": "number",
+            "example": 1
+          },
+          "email": {
+            "type": "string",
+            "example": "admin@wepick.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "asdf!@#"
+          }
+        }
+      },
+    "TempAccount": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "id" : {
+          "type": "string",
+          "example": "asdf456sdf4465d"
+        }
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "result": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

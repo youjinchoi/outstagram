@@ -1,14 +1,22 @@
 {
-  "name": "sneakpick",
+  "name": "outstagram",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node src/app.js"
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "express": "3.2.6",
-    "htmlparser2": "^3.9.2",
-    "jade": "*"
+    "body-parser": "^1.18.2",
+    "crypto": "^1.0.1",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.3",
+    "path": "^0.12.7",
+    "query-string": "^5.0.1",
+    "swagger-ui-express": "^2.0.10",
+    "yargs": "^10.0.3",
+    "htmlparser2": "^3.9.2"
   }
 }
